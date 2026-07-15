@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golden Pheasant Painting — Craftsman Painting, Feather-Fine Finish</title>
+<meta name="description" content="Golden Pheasant Painting: interior and exterior house painting with a craftsman's eye. Free estimates, licensed and insured.">
+<style>
+  :root{
+    --gold:#c9962e; --gold-bright:#e8b84b; --gold-pale:#f3dfae;
+    --green:#1d3a2a; --green-deep:#122419; --copper:#a25b2a;
+    --cream:#faf6ec; --ink:#1c1a14; --muted:#6f6a5c;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.2}
+  a{color:var(--copper)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(18,36,25,.97);color:var(--cream);
+    border-bottom:2px solid var(--gold)}
+  .nav{display:flex;align-items:center;gap:24px;padding:14px 24px;max-width:1080px;margin:0 auto}
+  .nav .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:1.15rem;
+    color:var(--gold-bright);text-decoration:none;letter-spacing:.02em}
+  .nav .brand svg{width:38px;height:38px}
+  .nav .links{margin-left:auto;display:flex;gap:22px}
+  .nav .links a{color:var(--cream);text-decoration:none;font-size:.95rem;opacity:.9}
+  .nav .links a:hover{color:var(--gold-bright);opacity:1}
+  .nav .cta{background:var(--gold);color:var(--green-deep);padding:8px 18px;border-radius:4px;
+    font-weight:600;text-decoration:none;font-size:.95rem}
+  .nav .cta:hover{background:var(--gold-bright)}
+  @media(max-width:720px){.nav .links{display:none}}
+
+  /* Hero */
+  .hero{background:
+    radial-gradient(ellipse at 75% 20%, rgba(201,150,46,.28), transparent 55%),
+    linear-gradient(160deg, var(--green-deep) 0%, var(--green) 60%, #274b35 100%);
+    color:var(--cream);padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+  .hero h1{font-size:clamp(2rem,5vw,3.2rem);color:#fff}
+  .hero h1 em{font-style:normal;color:var(--gold-bright)}
+  .hero p.lede{margin:20px 0 30px;font-size:1.1rem;opacity:.92;max-width:34em}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:4px;text-decoration:none;font-weight:600}
+  .btn.primary{background:var(--gold);color:var(--green-deep)}
+  .btn.primary:hover{background:var(--gold-bright)}
+  .btn.ghost{border:1.5px solid var(--gold-pale);color:var(--gold-pale)}
+  .btn.ghost:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+  .hero .bird{display:flex;justify-content:center}
+  .hero .bird svg{width:min(300px,60vw);height:auto;filter:drop-shadow(0 12px 30px rgba(0,0,0,.35))}
+  @media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero .bird{order:-1}.hero .bird svg{width:180px}}
+
+  .trustbar{background:var(--green-deep);color:var(--gold-pale);font-size:.92rem;
+    padding:12px 0;border-top:1px solid rgba(232,184,75,.25)}
+  .trustbar .wrap{display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+  .trustbar span{white-space:nowrap}
+
+  section{padding:70px 0}
+  .kicker{color:var(--copper);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:700}
+  h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:8px 0 14px;color:var(--green-deep)}
+  .sub{color:var(--muted);max-width:44em}
+
+  /* Services */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:36px}
+  .card{background:#fff;border:1px solid #e8e0cc;border-top:3px solid var(--gold);
+    border-radius:6px;padding:26px 24px;box-shadow:0 2px 10px rgba(28,26,20,.05)}
+  .card h3{font-size:1.15rem;color:var(--green);margin-bottom:10px}
+  .card p{font-size:.95rem;color:var(--muted)}
+  .card .glyph{font-size:1.6rem;margin-bottom:12px;display:block}
+
+  /* Process */
+  .process{background:linear-gradient(180deg,#f4eddb, var(--cream))}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;margin-top:36px;counter-reset:step}
+  .step{position:relative;padding:26px 22px 22px;background:#fff;border:1px solid #e8e0cc;border-radius:6px}
+  .step::before{counter-increment:step;content:counter(step);
+    position:absolute;top:-16px;left:20px;width:34px;height:34px;border-radius:50%;
+    background:var(--green);color:var(--gold-bright);font-family:var(--serif);font-weight:700;
+    display:flex;align-items:center;justify-content:center;border:2px solid var(--gold)}
+  .step h3{font-size:1.05rem;color:var(--green);margin-bottom:8px}
+  .step p{font-size:.92rem;color:var(--muted)}
+
+  /* Why */
+  .why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .why ul{list-style:none;margin-top:24px}
+  .why li{padding:10px 0 10px 36px;position:relative;font-size:1.02rem}
+  .why li::before{content:"";position:absolute;left:0;top:14px;width:20px;height:20px;
+    background:var(--gold);clip-path:polygon(50% 0,100% 38%,82% 100%,18% 100%,0 38%);opacity:.9}
+  .featherbox{background:var(--green);border-radius:8px;color:var(--cream);padding:38px 34px;
+    border:1px solid var(--gold);box-shadow:0 14px 40px rgba(18,36,25,.25)}
+  .featherbox h3{color:var(--gold-bright);font-size:1.3rem;margin-bottom:12px}
+  .featherbox p{opacity:.92;font-size:.98rem}
+  .featherbox .sig{margin-top:20px;font-family:var(--serif);font-style:italic;color:var(--gold-pale)}
+  @media(max-width:820px){.why .wrap{grid-template-columns:1fr}}
+
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:36px}
+  .ph{aspect-ratio:4/3;border-radius:6px;display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,.85);font-size:.9rem;letter-spacing:.05em;text-align:center;padding:12px;
+    border:1px solid rgba(0,0,0,.08)}
+  .ph small{opacity:.75}
+  .ph:nth-child(1){background:linear-gradient(135deg,#1d3a2a,#2f5c40)}
+  .ph:nth-child(2){background:linear-gradient(135deg,#a25b2a,#c9962e)}
+  .ph:nth-child(3){background:linear-gradient(135deg,#41597a,#6d86a8)}
+  .ph:nth-child(4){background:linear-gradient(135deg,#5d4a6b,#8a729c)}
+  .ph:nth-child(5){background:linear-gradient(135deg,#7a3d33,#a8594c)}
+  .ph:nth-child(6){background:linear-gradient(135deg,#3d5c5c,#5c8a86)}
+
+  /* Quote */
+  .quote{background:
+    radial-gradient(ellipse at 20% 10%, rgba(201,150,46,.22), transparent 50%),
+    var(--green-deep);color:var(--cream)}
+  .quote h2{color:#fff}
+  .quote .panel{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;margin-top:30px}
+  .qform{background:rgba(255,255,255,.06);border:1px solid rgba(232,184,75,.35);border-radius:8px;padding:30px}
+  .qform label{display:block;font-size:.85rem;margin:14px 0 6px;color:var(--gold-pale)}
+  .qform input,.qform select,.qform textarea{width:100%;padding:11px 12px;border-radius:4px;
+    border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.92);font:inherit;font-size:.95rem}
+  .qform button{margin-top:22px;width:100%;padding:14px;background:var(--gold);border:none;
+    border-radius:4px;font:inherit;font-weight:700;color:var(--green-deep);cursor:pointer;font-size:1rem}
+  .qform button:hover{background:var(--gold-bright)}
+  .qform .note{font-size:.8rem;opacity:.7;margin-top:10px}
+  .contactline{margin-top:26px;font-size:1.05rem}
+  .contactline strong{color:var(--gold-bright)}
+  .quote .details p{opacity:.9;margin-bottom:14px}
+  @media(max-width:820px){.quote .panel{grid-template-columns:1fr}}
+
+  footer{background:#0d1a12;color:#9aa895;font-size:.88rem;padding:34px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer .fbrand{display:flex;align-items:center;gap:10px;color:var(--gold);font-family:var(--serif)}
+  footer .fbrand svg{width:26px;height:26px}
+  .preview-ribbon{position:fixed;bottom:14px;right:-46px;transform:rotate(-35deg);z-index:60;
+    background:var(--copper);color:#fff;font-size:.72rem;letter-spacing:.12em;padding:6px 60px;
+    box-shadow:0 4px 14px rgba(0,0,0,.3);pointer-events:none}
+</style>
+</head>
+<body>
+
+<div class="preview-ribbon">PREVIEW DRAFT</div>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top" aria-label="Golden Pheasant Painting home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#122419" stroke="#c9962e" stroke-width="2"/>
+        <path d="M14 44 C20 30 30 24 46 22 C40 28 38 32 36 38 C32 46 22 48 14 44 Z" fill="#c9962e"/>
+        <path d="M46 22 C50 20 54 20 56 22 C52 23 50 25 48 27 Z" fill="#e8b84b"/>
+        <circle cx="47" cy="24" r="1.6" fill="#122419"/>
+        <path d="M14 44 C24 43 30 40 34 34" stroke="#122419" stroke-width="1.4" fill="none" opacity=".55"/>
+        <path d="M16 46 L10 52 M20 47 L16 54" stroke="#e8b84b" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Golden Pheasant Painting
+    </a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#process">Our Process</a>
+      <a href="#why">Why Us</a>
+      <a href="#gallery">Work</a>
+    </div>
+    <a class="cta" href="#quote">Free Estimate</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Craftsman painting with a <em>feather-fine finish</em>.</h1>
+        <p class="lede">Golden Pheasant Painting brings patience, preparation, and pride to every
+          wall we touch — interiors that feel brand new, exteriors that stand up to Oregon weather,
+          and lines so clean they look drawn on.</p>
+        <div class="actions">
+          <a class="btn primary" href="#quote">Get a Free Estimate</a>
+          <a class="btn ghost" href="#services">See What We Do</a>
+        </div>
+      </div>
+      <div class="bird" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="96" fill="none" stroke="#c9962e" stroke-width="1.5" opacity=".5"/>
+          <circle cx="100" cy="100" r="88" fill="#122419" opacity=".55"/>
+          <!-- stylized golden pheasant -->
+          <path d="M30 138 C48 100 78 82 138 74 C120 92 114 104 108 122 C96 148 60 154 30 138 Z" fill="#c9962e"/>
+          <path d="M138 74 C150 66 162 64 170 70 C158 73 152 79 146 87 Z" fill="#e8b84b"/>
+          <circle cx="141" cy="80" r="4" fill="#122419"/>
+          <path d="M170 70 L186 62 M172 76 L188 74" stroke="#e8b84b" stroke-width="3" stroke-linecap="round"/>
+          <path d="M30 138 C60 136 84 126 100 106" stroke="#122419" stroke-width="3" fill="none" opacity=".5"/>
+          <path d="M36 146 L20 166 M48 150 L38 170 M60 152 L56 172" stroke="#a25b2a" stroke-width="5" stroke-linecap="round"/>
+          <!-- paint stroke it stands on -->
+          <path d="M18 176 C60 168 140 168 184 176 L184 184 C140 178 60 178 18 184 Z" fill="#e8b84b"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="trustbar">
+    <div class="wrap">
+      <span>✓ Licensed &amp; Insured <em>(CCB # pending)</em></span>
+      <span>✓ Free, No-Pressure Estimates</span>
+      <span>✓ Meticulous Prep &amp; Clean-Up</span>
+      <span>✓ Premium Paints, Honest Pricing</span>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <span class="kicker">Services</span>
+      <h2>Everything a house needs to look its best</h2>
+      <p class="sub">From a single accent wall to a full exterior repaint, we treat every job like
+        it's our own home — because word of mouth is our whole business.</p>
+      <div class="cards">
+        <div class="card"><span class="glyph">🛋️</span><h3>Interior Painting</h3>
+          <p>Walls, ceilings, trim, doors, and accent work. Furniture protected, edges razor-sharp,
+          rooms back in service fast.</p></div>
+        <div class="card"><span class="glyph">🏡</span><h3>Exterior Painting</h3>
+          <p>Pressure-wash, scrape, sand, prime, and two finish coats built for wet winters and
+          summer sun. Siding, trim, fascia, and doors.</p></div>
+        <div class="card"><span class="glyph">🚪</span><h3>Cabinets &amp; Trim</h3>
+          <p>Factory-smooth sprayed finishes on kitchen cabinets, built-ins, and millwork — the
+          highest-impact upgrade per dollar in the house.</p></div>
+        <div class="card"><span class="glyph">🪵</span><h3>Decks &amp; Fences</h3>
+          <p>Stains and sealers that bring tired wood back to life and protect it for years of
+          barbecues to come.</p></div>
+        <div class="card"><span class="glyph">🩹</span><h3>Drywall &amp; Repair</h3>
+          <p>Patches, texture matching, caulking, and peeling-paint rescue — the prep work that
+          separates a paint job from a finish.</p></div>
+        <div class="card"><span class="glyph">🎨</span><h3>Color Consultation</h3>
+          <p>Not sure which white is <em>the</em> white? We'll sample, compare in your light, and
+          help you land colors you'll love for a decade.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="wrap">
+      <span class="kicker">Our Process</span>
+      <h2>No surprises, start to finish</h2>
+      <div class="steps">
+        <div class="step"><h3>Walk &amp; Talk</h3><p>We walk the job with you, listen to what you
+          want, and take real measurements — not guesses.</p></div>
+        <div class="step"><h3>Clear Written Quote</h3><p>One page, plain English: scope, prep,
+          products, coats, timeline, and price. It doesn't change unless you change the job.</p></div>
+        <div class="step"><h3>Prep Like It Matters</h3><p>Masking, sanding, priming, repairs.
+          Ninety percent of a great finish happens before the finish coat.</p></div>
+        <div class="step"><h3>Paint &amp; Perfect</h3><p>Quality coatings applied right, a final
+          walkthrough with you, and we don't leave until you're happy.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div>
+        <span class="kicker">Why Golden Pheasant</span>
+        <h2>The golden pheasant doesn't rush its plumage</h2>
+        <ul>
+          <li><strong>Owner on every job.</strong> The person who quoted your project is the person
+            holding the brush.</li>
+          <li><strong>Prep-first philosophy.</strong> We'd rather lose a bid than skip the sanding.</li>
+          <li><strong>Respect for your home.</strong> Clean drop cloths, daily tidy-up, shoes off
+            where it counts.</li>
+          <li><strong>Straight answers.</strong> Real timelines, real prices, and a phone that gets
+            answered.</li>
+        </ul>
+      </div>
+      <div class="featherbox">
+        <h3>Our promise</h3>
+        <p>Every bird earns its feathers one at a time — and every home earns its finish one careful
+        coat at a time. If a line isn't crisp or a wall isn't covered, we make it right before we
+        ask to be paid.</p>
+        <p class="sig">— The Golden Pheasant Painting crew</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <span class="kicker">Recent Work</span>
+      <h2>Project gallery</h2>
+      <p class="sub">Photos coming soon — this preview uses placeholders while we gather
+        before-and-after shots.</p>
+      <div class="gallery-grid">
+        <div class="ph">Exterior repaint<br><small>before / after</small></div>
+        <div class="ph">Kitchen cabinets<br><small>sprayed finish</small></div>
+        <div class="ph">Living room refresh<br><small>walls + trim</small></div>
+        <div class="ph">Front door accent<br><small>color pop</small></div>
+        <div class="ph">Deck restoration<br><small>stain + seal</small></div>
+        <div class="ph">Nursery two-tone<br><small>with wainscoting</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" id="quote">
+    <div class="wrap">
+      <span class="kicker" style="color:var(--gold-bright)">Free Estimate</span>
+      <h2>Let's look at your project</h2>
+      <div class="panel">
+        <form class="qform" action="mailto:hello@goldenpheasantpainting.com" method="post" enctype="text/plain">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" placeholder="Your name" required>
+          <label for="f-phone">Phone or Email</label>
+          <input id="f-phone" name="contact" type="text" placeholder="Best way to reach you" required>
+          <label for="f-type">Project Type</label>
+          <select id="f-type" name="project">
+            <option>Interior painting</option>
+            <option>Exterior painting</option>
+            <option>Cabinets / trim</option>
+            <option>Deck or fence</option>
+            <option>Something else</option>
+          </select>
+          <label for="f-msg">Tell us about it</label>
+          <textarea id="f-msg" name="details" rows="4" placeholder="Rooms, square footage, timeline — whatever you know"></textarea>
+          <button type="submit">Request My Free Estimate</button>
+          <p class="note">Preview note: form is a placeholder — final site will wire this to the
+            business email or a form service.</p>
+        </form>
+        <div class="details">
+          <p>Prefer to talk it through? Call or text and we'll set up a time to walk the job.</p>
+          <p class="contactline">📞 <strong>(503) 555-0000</strong><br>
+            <span style="font-size:.85rem;opacity:.7">(placeholder — real number goes here)</span></p>
+          <p class="contactline">✉️ <strong>hello@goldenpheasantpainting.com</strong><br>
+            <span style="font-size:.85rem;opacity:.7">(placeholder — confirm final email/domain)</span></p>
+          <p style="margin-top:26px">Serving <strong>Newberg, McMinnville, Sherwood, and the greater
+            Yamhill County / Portland metro area</strong> — service area to be confirmed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="none" stroke="#c9962e" stroke-width="2"/>
+        <path d="M14 44 C20 30 30 24 46 22 C40 28 38 32 36 38 C32 46 22 48 14 44 Z" fill="#c9962e"/>
+      </svg>
+      Golden Pheasant Painting
+    </div>
+    <div>© 2026 Golden Pheasant Painting · Licensed · Bonded · Insured (CCB # pending)</div>
+  </div>
+</footer>
+
+</body>
+</html>
