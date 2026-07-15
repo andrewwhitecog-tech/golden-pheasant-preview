@@ -135,6 +135,16 @@
   .preview-ribbon{position:fixed;bottom:14px;right:-46px;transform:rotate(-35deg);z-index:60;
     background:var(--copper);color:#fff;font-size:.72rem;letter-spacing:.12em;padding:6px 60px;
     box-shadow:0 4px 14px rgba(0,0,0,.3);pointer-events:none}
+
+  /* Estimator */
+  .est-label{display:block;font-size:.85rem;margin:14px 0 6px;color:var(--gold-pale)}
+  .est-input{width:100%;padding:11px 12px;border-radius:4px;border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.92);font:inherit;font-size:.95rem;color:var(--ink)}
+  #est-go:hover{background:var(--gold-bright)}
+  @media(max-width:820px){.est-panel{grid-template-columns:1fr !important}}
+  .policy{background:#fff;border-left:4px solid var(--copper);border-radius:6px;padding:20px 22px;
+    margin-top:28px;color:var(--ink)}
+  .policy strong{color:var(--copper)}
 </style>
 </head>
 <body>
@@ -160,7 +170,7 @@
       <a href="#why">Why Us</a>
       <a href="#gallery">Work</a>
     </div>
-    <a class="cta" href="#quote">Free Estimate</a>
+    <a class="cta" href="#estimator">Instant Estimate</a>
   </nav>
 </header>
 
@@ -173,7 +183,7 @@
           wall we touch — interiors that feel brand new, exteriors that stand up to Oregon weather,
           and lines so clean they look drawn on.</p>
         <div class="actions">
-          <a class="btn primary" href="#quote">Get a Free Estimate</a>
+          <a class="btn primary" href="#estimator">Get an Instant Ballpark</a>
           <a class="btn ghost" href="#services">See What We Do</a>
         </div>
       </div>
@@ -188,7 +198,7 @@
       <span>✓ Insured + Bonded <em>(CCB # pending)</em></span>
       <span>✓ EPA RRP / Lead-Safe Practices</span>
       <span>✓ EPA 608 Universal · PHTA Pool Operator</span>
-      <span>✓ Free, No-Pressure Estimates</span>
+      <span>✓ Instant Online Ballpark — No Site Visit Needed</span>
     </div>
   </div>
 
@@ -221,15 +231,101 @@
     </div>
   </section>
 
+  <section id="estimator" style="background:linear-gradient(180deg,var(--green-deep),var(--green));color:var(--cream)">
+    <div class="wrap">
+      <span class="kicker" style="color:var(--gold-bright)">Pricing</span>
+      <h2 style="color:#fff">The Pheasant Estimator 🪶</h2>
+      <p class="sub" style="color:rgba(247,242,232,.85)">Pick your project and get an instant,
+        <strong style="color:var(--gold-bright)">unofficial ballpark</strong> — free, because a robot
+        does it. It is not a quote or a bid; real numbers come from a paid on-site assessment.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:30px" class="est-panel">
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(232,184,75,.35);border-radius:8px;padding:28px">
+          <label class="est-label" for="est-type">Project type</label>
+          <select id="est-type" class="est-input">
+            <option value="interior">Interior painting</option>
+            <option value="exterior">Exterior painting</option>
+            <option value="cabinets">Cabinets</option>
+            <option value="deck">Deck / fence</option>
+          </select>
+
+          <div data-est="interior">
+            <label class="est-label" for="est-rooms">Number of rooms</label>
+            <input id="est-rooms" class="est-input" type="number" min="1" max="20" value="3">
+            <label class="est-label" for="est-size">Typical room size</label>
+            <select id="est-size" class="est-input">
+              <option value="s">Small (bathroom, office)</option>
+              <option value="m" selected>Medium (bedroom)</option>
+              <option value="l">Large (living room, open plan)</option>
+            </select>
+            <label class="est-label" for="est-scope">Scope</label>
+            <select id="est-scope" class="est-input">
+              <option value="walls">Walls only</option>
+              <option value="full">Walls + ceiling + trim</option>
+            </select>
+          </div>
+
+          <div data-est="exterior" hidden>
+            <label class="est-label" for="est-sqft">House footprint (sq ft)</label>
+            <input id="est-sqft" class="est-input" type="number" min="300" max="8000" value="1600">
+            <label class="est-label" for="est-stories">Stories</label>
+            <select id="est-stories" class="est-input">
+              <option value="1">One</option>
+              <option value="2" selected>Two</option>
+              <option value="3">Three</option>
+            </select>
+            <label class="est-label" for="est-cond">Current condition</label>
+            <select id="est-cond" class="est-input">
+              <option value="good">Good — mostly sound paint</option>
+              <option value="fair">Weathered — some prep needed</option>
+              <option value="poor">Peeling — heavy prep</option>
+            </select>
+          </div>
+
+          <div data-est="cabinets" hidden>
+            <label class="est-label" for="est-doors">Cabinet doors</label>
+            <input id="est-doors" class="est-input" type="number" min="1" max="80" value="20">
+            <label class="est-label" for="est-drawers">Drawer fronts</label>
+            <input id="est-drawers" class="est-input" type="number" min="0" max="40" value="8">
+          </div>
+
+          <div data-est="deck" hidden>
+            <label class="est-label" for="est-decksqft">Deck / fence area (sq ft)</label>
+            <input id="est-decksqft" class="est-input" type="number" min="50" max="5000" value="400">
+            <label class="est-label" for="est-deckfinish">Finish</label>
+            <select id="est-deckfinish" class="est-input">
+              <option value="stain">Stain + seal</option>
+              <option value="paint">Full repaint</option>
+            </select>
+          </div>
+
+          <button id="est-go" style="margin-top:22px;width:100%;padding:14px;background:var(--gold);border:none;border-radius:4px;font:inherit;font-weight:700;color:var(--green-deep);cursor:pointer;font-size:1rem">Give Me the Ballpark</button>
+        </div>
+        <div>
+          <div id="est-result" style="background:rgba(255,255,255,.06);border:1px solid rgba(232,184,75,.35);border-radius:8px;padding:28px;min-height:130px">
+            <div style="font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-pale)">Ballpark range</div>
+            <div id="est-num" style="font-family:var(--serif);font-size:2rem;color:var(--gold-bright);margin:10px 0 6px">—</div>
+            <div id="est-note" style="font-size:.9rem;opacity:.85">Fill in the project and hit the button.</div>
+          </div>
+          <p style="font-size:.85rem;opacity:.75;margin-top:16px">Unofficial and non-binding. Assumes
+            standard prep, quality mid-grade coatings, and normal access. Lead-safe (RRP) work,
+            repairs, and color-matching add cost. Final pricing always comes from a written quote
+            after a paid site assessment — the assessment fee is credited in full toward your
+            project when you hire us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="process" id="process">
     <div class="wrap">
       <span class="kicker">Our Process</span>
       <h2>No surprises, start to finish</h2>
       <div class="steps">
-        <div class="step"><h3>Walk &amp; Talk</h3><p>We walk the job with you, listen to what you
-          want, and take real measurements — not guesses.</p></div>
-        <div class="step"><h3>Clear Written Quote</h3><p>One page, plain English: scope, prep,
-          products, coats, timeline, and price. It doesn't change unless you change the job.</p></div>
+        <div class="step"><h3>Instant Ballpark</h3><p>Start with the free online estimator above —
+          no site visit, no obligation, no waiting.</p></div>
+        <div class="step"><h3>Paid Site Assessment</h3><p>If the ballpark works for you, we walk the
+          job, measure, and scope it properly. Flat fee, <strong>credited 100% toward your project</strong>
+          when you hire us.</p></div>
         <div class="step"><h3>Prep Like It Matters</h3><p>Masking, sanding, priming, repairs.
           Ninety percent of a great finish happens before the finish coat.</p></div>
         <div class="step"><h3>Paint &amp; Perfect</h3><p>Quality coatings applied right, a final
@@ -282,8 +378,12 @@
 
   <section class="quote" id="quote">
     <div class="wrap">
-      <span class="kicker" style="color:var(--gold-bright)">Free Estimate</span>
-      <h2>Let's look at your project</h2>
+      <span class="kicker" style="color:var(--gold-bright)">Next Step</span>
+      <h2>Book a site assessment</h2>
+      <p style="opacity:.85;max-width:46em">Happy with the ballpark? The next step is a paid on-site
+        assessment: real measurements, a proper scope, and a written quote that holds. The flat
+        assessment fee is <strong style="color:var(--gold-bright)">credited 100% toward your
+        project</strong> when you hire us.</p>
       <div class="panel">
         <form class="qform" action="mailto:andrew@goldenpheasantpc.com" method="post" enctype="text/plain">
           <label for="f-name">Name</label>
@@ -300,7 +400,7 @@
           </select>
           <label for="f-msg">Tell us about it</label>
           <textarea id="f-msg" name="details" rows="4" placeholder="Rooms, square footage, timeline — whatever you know"></textarea>
-          <button type="submit">Request My Free Estimate</button>
+          <button type="submit">Request a Site Assessment</button>
           <p class="note">Preview note: form is a placeholder — final site will wire this to the
             business email or a form service.</p>
         </form>
@@ -312,6 +412,12 @@
             <span style="font-size:.85rem;opacity:.7">(domain registration in progress)</span></p>
           <p style="margin-top:26px">Serving <strong>Portland | Milwaukie | Lake Oswego | Beaverton |
             Tigard | Canby | Nearby</strong>.</p>
+          <div class="policy">
+            <strong>Straight talk about estimates.</strong> The online estimator is free because a
+            robot does it. Site visits, detailed takeoffs, and design or color-development work are
+            professional services and are billed as a flat assessment fee — credited in full toward
+            your project when we do the work. <strong>No free takeoffs. No free design work.</strong>
+          </div>
         </div>
       </div>
     </div>
@@ -331,5 +437,63 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  const type = document.getElementById('est-type');
+  const panels = document.querySelectorAll('[data-est]');
+  function showPanel() {
+    panels.forEach(p => p.hidden = p.dataset.est !== type.value);
+  }
+  type.addEventListener('change', showPanel);
+  showPanel();
+
+  const num = v => Math.max(0, parseFloat(v) || 0);
+  const round50 = v => Math.round(v / 50) * 50;
+  const fmt = v => '$' + round50(v).toLocaleString();
+
+  const MODELS = {
+    interior() {
+      const rooms = num(document.getElementById('est-rooms').value);
+      const size = document.getElementById('est-size').value;
+      const scope = document.getElementById('est-scope').value;
+      const base = { s: [300, 500], m: [450, 750], l: [650, 1100] }[size];
+      const mult = scope === 'full' ? 1.45 : 1;
+      return [rooms * base[0] * mult, rooms * base[1] * mult,
+              `${rooms} room(s), ${scope === 'full' ? 'walls + ceiling + trim' : 'walls only'}`];
+    },
+    exterior() {
+      const sqft = num(document.getElementById('est-sqft').value);
+      const stories = document.getElementById('est-stories').value;
+      const cond = document.getElementById('est-cond').value;
+      const rate = { 1: [2.5, 4.5], 2: [3.5, 6.0], 3: [4.5, 7.5] }[stories];
+      const prep = { good: 1, fair: 1.15, poor: 1.35 }[cond];
+      return [sqft * rate[0] * prep, sqft * rate[1] * prep,
+              `${sqft.toLocaleString()} sq ft footprint, ${stories}-story, ${cond} condition`];
+    },
+    cabinets() {
+      const doors = num(document.getElementById('est-doors').value);
+      const drawers = num(document.getElementById('est-drawers').value);
+      const lo = Math.max(1200, doors * 100 + drawers * 40);
+      const hi = Math.max(1500, doors * 150 + drawers * 60);
+      return [lo, hi, `${doors} doors + ${drawers} drawer fronts, sprayed finish`];
+    },
+    deck() {
+      const sqft = num(document.getElementById('est-decksqft').value);
+      const finish = document.getElementById('est-deckfinish').value;
+      const rate = finish === 'paint' ? [3.5, 6.0] : [2.5, 4.0];
+      return [Math.max(400, sqft * rate[0]), Math.max(600, sqft * rate[1]),
+              `${sqft.toLocaleString()} sq ft, ${finish === 'paint' ? 'full repaint' : 'stain + seal'}`];
+    }
+  };
+
+  document.getElementById('est-go').addEventListener('click', () => {
+    const [lo, hi, desc] = MODELS[type.value]();
+    document.getElementById('est-num').textContent = fmt(lo) + ' – ' + fmt(hi);
+    document.getElementById('est-note').innerHTML =
+      desc + '.<br>Unofficial ballpark — a written quote follows a paid site assessment ' +
+      '(fee credited toward the job).';
+  });
+})();
+</script>
 </body>
 </html>
