@@ -12,6 +12,13 @@ Double-click index.html, or serve this folder locally:
 
 Then open http://127.0.0.1:8765/ in a browser.
 
+The current public preview is:
+
+    https://andrewwhitecog-tech.github.io/golden-pheasant-preview/
+
+That preview URL is the current canonical URL in the HTML, sitemap, robots file, and social-card
+metadata. Change all four together if the site later moves to a verified business domain.
+
 ## Current status
 
 - Responsive single-page preview with interior, exterior, cabinet, trim, deck, and fence services.
@@ -19,8 +26,21 @@ Then open http://127.0.0.1:8765/ in a browser.
 - Six clearly labeled gallery placeholders; no stock photography is presented as completed work.
 - Instant ballpark estimator runs entirely in the browser and does not transmit customer data.
 - The assessment form uses the computer's email application; it has no hidden database or tracker.
+- Search, Open Graph, Twitter-card, favicon, web-manifest, robots, sitemap, and truthful
+  HousePainter service metadata are included without an address, hours, license number, ratings,
+  reviews, or testimonials.
 - The PREVIEW DRAFT ribbon stays visible until licensing, insurance, domain, contact, and pricing
   claims are re-verified for launch.
+
+## Verify it
+
+Run the dependency-free static checks and an ephemeral local HTTP smoke test:
+
+    C:\Python314\python.exe tools\verify_static_site.py --http-smoke
+
+The verifier checks public root assets, internal links and fragments, JSON-LD, manifest JSON,
+sitemap XML, the canonical URL, clickable phone/email actions, and the required preview/CCB/mailto
+disclosures. It does not contact customers or submit the placeholder form.
 
 The business contact details already in the preview came from the existing permissioned project
 history. Do not add a home address or personal-only credentials to the public site.

@@ -1,0 +1,18 @@
+{
+  "name": "Golden Pheasant Painting",
+  "short_name": "Golden Pheasant",
+  "description": "Owner-operated painting services for the Portland, Oregon area.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "minimal-ui",
+  "background_color": "#F7F2E8",
+  "theme_color": "#122419",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "560x560",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

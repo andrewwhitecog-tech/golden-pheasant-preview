@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andrewwhitecog-tech.github.io/golden-pheasant-preview/sitemap.xml
