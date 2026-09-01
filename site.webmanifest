@@ -1,7 +1,7 @@
 {
-  "name": "Golden Pheasant Painting",
+  "name": "Golden Pheasant Property Care Concept",
   "short_name": "Golden Pheasant",
-  "description": "Owner-operated painting services for the Portland, Oregon area.",
+  "description": "A non-commercial portfolio prototype for a possible future property-care brand.",
   "start_url": "./",
   "scope": "./",
   "display": "minimal-ui",

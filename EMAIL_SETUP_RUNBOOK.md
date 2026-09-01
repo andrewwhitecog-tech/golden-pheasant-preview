@@ -1,7 +1,8 @@
 # Golden Pheasant email — runbook (waiting on domain purchase)
 
 **Target address:** andrew@goldenpheasantpc.com (already on the card back + website)
-**Domain to buy:** goldenpheasantpc.com (verified available 2026-07-15)
+**Domain to buy:** goldenpheasantpc.com (DNS and Verisign RDAP rechecked 2026-09-01; no record was
+found at that moment, but availability can change and must be rechecked immediately before purchase)
 
 ## Step 1 — Andre buys the domain (~$10-12/yr)
 Cheapest/simplest registrars: Cloudflare Registrar (at-cost, requires free CF account first),

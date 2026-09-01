@@ -80,8 +80,11 @@ def verify_static() -> list[str]:
 
     require(bool("".join(parser.title_parts).strip()), "document title is empty", errors)
     require(parser.meta.get("description", "").strip() != "", "meta description is missing", errors)
-    require("licensed" not in parser.meta.get("description", "").lower(),
-            "meta description must not claim a verified license while CCB is pending", errors)
+    description = parser.meta.get("description", "").lower()
+    require("licensed contractor" not in description and "licensed painter" not in description,
+            "meta description must not claim a verified contractor license", errors)
+    require(parser.meta.get("robots") == "noindex,nofollow,noarchive",
+            "portfolio concept must remain noindex, nofollow, and noarchive", errors)
     for key in ("og:title", "og:description", "og:url", "og:image", "twitter:card"):
         require(bool(parser.meta.get(key)), f"missing social metadata: {key}", errors)
 
@@ -118,7 +121,9 @@ def verify_static() -> list[str]:
     if json_ld_matches:
         try:
             schema = json.loads(json_ld_matches[0])
-            require(schema.get("@type") == "HousePainter", "JSON-LD @type must be HousePainter", errors)
+            require(schema.get("@type") == "CreativeWork", "JSON-LD @type must be CreativeWork", errors)
+            require(schema.get("@id", "").endswith("/#concept"),
+                    "JSON-LD @id must identify the portfolio concept", errors)
             def nested_keys(value: object) -> set[str]:
                 if isinstance(value, dict):
                     return {str(key).lower() for key in value} | {
@@ -137,6 +142,10 @@ def verify_static() -> list[str]:
 
     try:
         manifest = json.loads((ROOT / "site.webmanifest").read_text(encoding="utf-8"))
+        require(manifest.get("name") == "Golden Pheasant Property Care Concept",
+                "manifest must identify the portfolio concept", errors)
+        require("painting services" not in manifest.get("description", "").lower(),
+                "manifest must not advertise painting services", errors)
         require(manifest.get("start_url") == "./", "manifest start_url must stay preview-portable", errors)
         for icon in manifest.get("icons", []):
             require((ROOT / icon.get("src", "")).is_file(),
@@ -153,8 +162,17 @@ def verify_static() -> list[str]:
 
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
     require(f"Sitemap: {CANONICAL}sitemap.xml" in robots, "robots.txt sitemap URL is incorrect", errors)
-    for safety_copy in ("PREVIEW DRAFT", "CCB # pending", "uses placeholders", "Nothing is sent or stored"):
+    for safety_copy in (
+        "PORTFOLIO CONCEPT",
+        "not currently licensed, bonded, or insured",
+        "no active CCB number",
+        "uses placeholders",
+        "Nothing is sent or stored",
+    ):
         require(safety_copy in html, f"required preview disclosure is missing: {safety_copy}", errors)
+    for forbidden_claim in ("Insured + Bonded", "CCB # pending", '"@type": "HousePainter"'):
+        require(forbidden_claim not in html,
+                f"stale contractor claim remains in public HTML: {forbidden_claim}", errors)
     require('href="tel:+15035839175"' in html, "accessible telephone link is missing", errors)
     require('href="mailto:andrew@goldenpheasantpc.com"' in html, "accessible email link is missing", errors)
     return errors

@@ -21,16 +21,19 @@ metadata. Change all four together if the site later moves to a verified busines
 
 ## Current status
 
-- Responsive single-page preview with interior, exterior, cabinet, trim, deck, and fence services.
-- Owner-operated origin story and work principles.
+- Responsive single-page portfolio concept separating cleaning-only inquiries from future licensed
+  painting and construction services.
+- Creator case study, brand story, and compliance-first design principles.
 - Six clearly labeled gallery placeholders; no stock photography is presented as completed work.
-- Instant ballpark estimator runs entirely in the browser and does not transmit customer data.
-- The assessment form uses the computer's email application; it has no hidden database or tracker.
+- Scope-builder interface demo runs entirely in the browser, produces no price, and transmits no
+  customer data.
+- The cleaning-only inquiry form uses the computer's email application; it has no hidden database
+  or tracker.
 - Search, Open Graph, Twitter-card, favicon, web-manifest, robots, sitemap, and truthful
-  HousePainter service metadata are included without an address, hours, license number, ratings,
-  reviews, or testimonials.
-- The PREVIEW DRAFT ribbon stays visible until licensing, insurance, domain, contact, and pricing
-  claims are re-verified for launch.
+  CreativeWork metadata are included without an address, hours, license number, ratings, reviews,
+  or testimonials.
+- The PORTFOLIO CONCEPT ribbon stays visible until licensing, insurance, domain, contact, and
+  pricing claims are re-verified for launch.
 
 ## Verify it
 
@@ -39,8 +42,10 @@ Run the dependency-free static checks and an ephemeral local HTTP smoke test:
     C:\Python314\python.exe tools\verify_static_site.py --http-smoke
 
 The verifier checks public root assets, internal links and fragments, JSON-LD, manifest JSON,
-sitemap XML, the canonical URL, clickable phone/email actions, and the required preview/CCB/mailto
-disclosures. It does not contact customers or submit the placeholder form.
+sitemap XML, the canonical URL, clickable phone/email actions, the noindex state, and the required
+concept/no-license/mailto disclosures. It also rejects stale contractor claims such as
+"Insured + Bonded," "CCB # pending," and HousePainter schema. It does not contact customers or
+submit the placeholder form.
 
 The business contact details already in the preview came from the existing permissioned project
 history. Do not add a home address or personal-only credentials to the public site.
@@ -58,10 +63,15 @@ history. Do not add a home address or personal-only credentials to the public si
 
 - Confirm the business name, public phone, public email, service area, and legal entity.
 - Replace all pending licensing language with verified wording or remove it.
-- Confirm estimator ranges and the paid-assessment policy.
+- Approve estimator ranges and the assessment policy before restoring any public pricing tool.
 - Connect the form to a privacy-respecting provider or keep the explicit email handoff.
 - Test keyboard navigation, mobile layout, estimator behavior, and every link.
-- Remove the PREVIEW DRAFT ribbon only after all checks pass.
+- Replace the PORTFOLIO CONCEPT state only after every launch gate in
+  BUSINESS_LAUNCH_READINESS.md is independently verified.
+
+BUSINESS_LAUNCH_READINESS.md is the dated operator checklist for moving from the current concept
+to a real painting contractor business. It separates safe preparation from paid, account, and
+public-launch actions that require owner confirmation.
 
 EMAIL_SETUP_RUNBOOK.md is an unpublished operator note for the future business domain. Nothing in
 this folder requires that domain to exist, and this handoff does not publish or deploy the site.
